@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سبا حلم | HULUM SPA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-warm: #F5EFE6;
+  --gold: #B8956A;
+  --gold-light: #D4B896;
+  --gold-dark: #8A6A40;
+  --rose: #D4A0A0;
+  --rose-light: #F0E0E0;
+  --text: #1E1A17;
+  --text-mid: #5A4E44;
+  --text-soft: #9A8A7A;
+  --border: #E8DDD0;
+  --white: #FFFFFF;
+  --green: #6A9A7A;
+  --green-light: #E8F4EC;
+  --red: #A05050;
+  --red-light: #F4E8E8;
+  --yellow: #C4A030;
+  --yellow-light: #FDF8E8;
+  --shadow: 0 2px 16px rgba(90,60,20,0.08);
+  --shadow-lg: 0 8px 40px rgba(90,60,20,0.13);
+  --radius: 14px;
+  --radius-sm: 8px;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Tajawal', sans-serif; font-size: 16px; line-height: 1.7; }
+
+/* === LAYOUT === */
+#app { min-height: 100vh; }
+.page { display: none; }
+.page.active { display: block; }
+
+/* === NAV === */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+  top: env(safe-area-inset-top, 0px);
+}
+.nav-logo { font-family: 'Noto Naskh Arabic', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold-dark); letter-spacing: 0.02em; text-decoration: none; }
+.nav-logo span { display: block; font-family: 'Tajawal', sans-serif; font-size: 0.65rem; font-weight: 300; color: var(--text-soft); letter-spacing: 0.12em; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold-dark); }
+.btn-nav-book { background: var(--gold); color: white; padding: 0.45rem 1.2rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.2s; }
+.btn-nav-book:hover { background: var(--gold-dark); }
+.hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 64px; right: 0; left: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; z-index: 99; flex-direction: column; gap: 0.75rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text-mid); text-decoration: none; font-size: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+@media (max-width: 700px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+/* === HERO === */
+.hero {
+  background: linear-gradient(160deg, var(--bg-warm) 0%, var(--bg) 60%);
+  padding: 5rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(184,149,106,0.12), transparent);
+}
+.hero-ornament { font-size: 2.5rem; color: var(--gold-light); margin-bottom: 0.5rem; display: block; }
+.hero h1 { font-family: 'Noto Naskh Arabic', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--text); line-height: 1.2; }
+.hero h1 em { font-style: normal; color: var(--gold-dark); }
+.hero-sub { font-size: 1.05rem; color: var(--text-mid); max-width: 500px; margin: 1rem auto 2rem; font-weight: 400; }
+.hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1.75rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; text-decoration: none; }
+.btn-primary { background: var(--gold); color: white; }
+.btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(184,149,106,0.3); }
+.btn-secondary { background: transparent; color: var(--gold-dark); border: 1.5px solid var(--gold); }
+.btn-secondary:hover { background: var(--gold); color: white; }
+.hero-info { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.hero-info-item { text-align: center; }
+.hero-info-item .val { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-dark); }
+.hero-info-item .lbl { font-size: 0.8rem; color: var(--text-soft); }
+
+/* === SECTIONS === */
+.section { padding: 4rem 1.5rem; }
+.section-alt { background: var(--bg-warm); }
+.section-center { text-align: center; }
+.section-title { font-family: 'Noto Naskh Arabic', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.section-sub { color: var(--text-soft); font-size: 0.95rem; max-width: 500px; margin: 0 auto 2.5rem; }
+.divider { width: 40px; height: 2px; background: var(--gold); margin: 0.75rem auto 1.5rem; border-radius: 2px; }
+
+/* === SERVICE CATEGORIES === */
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto; }
+.cat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+.cat-card:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-2px); }
+.cat-card.active { border-color: var(--gold); background: var(--bg-warm); }
+.cat-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.cat-name { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.cat-count { font-size: 0.8rem; color: var(--text-soft); margin-top: 0.2rem; }
+
+/* === SERVICES LIST === */
+.services-section { max-width: 900px; margin: 2rem auto 0; }
+.services-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.2s; }
+.service-card:hover { box-shadow: var(--shadow); border-color: var(--gold-light); }
+.service-img { width: 100%; height: 140px; object-fit: cover; background: var(--bg-warm); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.service-body { padding: 1rem; }
+.service-name { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.25rem; }
+.service-desc { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 0.75rem; line-height: 1.5; }
+.service-meta { display: flex; align-items: center; justify-content: space-between; }
+.service-price { font-family: 'Noto Naskh Arabic', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-dark); }
+.service-duration { font-size: 0.8rem; color: var(--text-soft); }
+.btn-book-service { width: 100%; margin-top: 0.75rem; background: var(--bg-warm); color: var(--gold-dark); border: 1px solid var(--gold-light); padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-book-service:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+/* === BOOKING WIZARD === */
+.booking-page { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+.booking-header { text-align: center; margin-bottom: 2rem; }
+.steps-bar { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2.5rem; }
+.step-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--border); color: var(--text-soft); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; transition: all 0.3s; }
+.step-dot.active { background: var(--gold); color: white; }
+.step-dot.done { background: var(--green); color: white; }
+.step-line { flex: 1; height: 2px; background: var(--border); max-width: 60px; }
+.step-line.done { background: var(--green); }
+.step-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; }
+.step-box-title { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.step-box-title .icon { font-size: 1.2rem; }
+.field-group { margin-bottom: 1rem; }
+.field-label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--text-mid); margin-bottom: 0.4rem; }
+.field-input { width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.65rem 0.9rem; font-family: 'Tajawal', sans-serif; font-size: 0.95rem; color: var(--text); background: var(--bg); transition: border-color 0.2s; outline: none; }
+.field-input:focus { border-color: var(--gold); background: white; }
+.field-input.error { border-color: var(--red); }
+textarea.field-input { resize: vertical; min-height: 80px; }
+.specialists-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; }
+.spec-card { border: 2px solid var(--border); border-radius: var(--radius); padding: 0.75rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+.spec-card:hover { border-color: var(--gold-light); }
+.spec-card.selected { border-color: var(--gold); background: var(--bg-warm); }
+.spec-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--bg-warm); margin: 0 auto 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.spec-name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.spec-role { font-size: 0.75rem; color: var(--text-soft); }
+.time-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.5rem; }
+.time-slot { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.5rem; text-align: center; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+.time-slot:hover:not(.taken) { border-color: var(--gold); color: var(--gold-dark); }
+.time-slot.selected { background: var(--gold); border-color: var(--gold); color: white; font-weight: 700; }
+.time-slot.taken { background: var(--border); color: var(--text-soft); cursor: not-allowed; text-decoration: line-through; font-size: 0.8rem; }
+.date-nav { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.date-nav-btn { background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.4rem 0.75rem; cursor: pointer; font-size: 1rem; color: var(--text-mid); }
+.date-display { flex: 1; text-align: center; font-weight: 600; color: var(--text); font-size: 0.95rem; }
+.booking-summary { background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+.summary-row:last-child { border-bottom: none; font-weight: 700; }
+.summary-label { color: var(--text-soft); font-size: 0.9rem; }
+.summary-value { color: var(--text); font-weight: 600; font-size: 0.9rem; }
+.policy-box { background: var(--yellow-light); border: 1px solid rgba(196,160,48,0.3); border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-mid); margin: 1rem 0; }
+.btn-group { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+.btn-full { width: 100%; justify-content: center; border-radius: var(--radius-sm); }
+
+/* === SUCCESS PAGE === */
+.success-card { max-width: 500px; margin: 3rem auto; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; }
+.success-icon { font-size: 3rem; margin-bottom: 0.75rem; display: block; }
+.success-title { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--green); margin-bottom: 0.5rem; }
+.booking-number { display: inline-block; background: var(--green-light); color: var(--green); border-radius: var(--radius-sm); padding: 0.3rem 0.75rem; font-weight: 700; font-size: 0.9rem; margin: 0.5rem 0 1rem; }
+.status-badge { display: inline-flex; align-items: center; gap: 0.4rem; border-radius: 50px; padding: 0.3rem 0.9rem; font-size: 0.85rem; font-weight: 700; }
+.status-pending { background: var(--yellow-light); color: var(--yellow); }
+.status-confirmed { background: var(--green-light); color: var(--green); }
+.status-rejected { background: var(--red-light); color: var(--red); }
+.status-cancelled { background: var(--red-light); color: var(--red); }
+.status-expired { background: #f0f0f0; color: #888; }
+
+/* === ADMIN === */
+.admin-layout { display: flex; min-height: 100vh; }
+.admin-sidebar { width: 240px; background: var(--text); color: white; flex-shrink: 0; display: flex; flex-direction: column; }
+.admin-sidebar-logo { padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.admin-sidebar-logo h2 { font-family: 'Noto Naskh Arabic', serif; font-size: 1.1rem; color: var(--gold-light); }
+.admin-sidebar-logo span { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; }
+.admin-nav { padding: 1rem 0; flex: 1; }
+.admin-nav-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 1.25rem; cursor: pointer; color: rgba(255,255,255,0.65); font-size: 0.9rem; transition: all 0.2s; border-right: 3px solid transparent; }
+.admin-nav-item:hover { background: rgba(255,255,255,0.05); color: white; }
+.admin-nav-item.active { background: rgba(184,149,106,0.15); color: var(--gold-light); border-right-color: var(--gold); }
+.admin-nav-item .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
+.admin-content { flex: 1; background: #F7F6F4; overflow-y: auto; }
+.admin-topbar { background: white; border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+.admin-topbar h1 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.admin-page { padding: 1.5rem; }
+.admin-page { display: none; }
+.admin-page.active { display: block; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.stat-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.stat-val { font-family: 'Noto Naskh Arabic', serif; font-size: 2rem; font-weight: 700; color: var(--gold-dark); }
+.stat-label { font-size: 0.8rem; color: var(--text-soft); margin-top: 0.2rem; }
+.stat-card.highlight { background: var(--gold); border-color: var(--gold); }
+.stat-card.highlight .stat-val, .stat-card.highlight .stat-label { color: white; }
+.admin-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1rem; overflow: hidden; }
+.admin-card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); font-weight: 700; font-size: 0.95rem; color: var(--text); display: flex; justify-content: space-between; align-items: center; }
+.admin-card-body { padding: 1rem 1.25rem; }
+.booking-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+.booking-row:last-child { border-bottom: none; }
+.booking-info { flex: 1; min-width: 0; }
+.booking-client { font-weight: 700; font-size: 0.95rem; }
+.booking-detail { font-size: 0.8rem; color: var(--text-soft); margin-top: 0.1rem; }
+.booking-actions { display: flex; gap: 0.5rem; flex-shrink: 0; flex-wrap: wrap; }
+.btn-sm { padding: 0.35rem 0.8rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; transition: all 0.2s; }
+.btn-confirm { background: var(--green); color: white; }
+.btn-confirm:hover { background: #508060; }
+.btn-reject { background: white; color: var(--red); border-color: var(--red); }
+.btn-reject:hover { background: var(--red); color: white; }
+.btn-cancel { background: white; color: var(--text-mid); border-color: var(--border); }
+.btn-cancel:hover { background: var(--border); }
+.btn-whatsapp { background: #25D366; color: white; }
+.btn-whatsapp:hover { background: #1EA952; }
+.timer { font-size: 0.75rem; font-weight: 700; color: var(--yellow); background: var(--yellow-light); padding: 0.2rem 0.5rem; border-radius: 4px; }
+.timer.urgent { color: var(--red); background: var(--red-light); }
+.table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.table th { text-align: right; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--border); font-size: 0.8rem; color: var(--text-soft); font-weight: 600; background: var(--bg); }
+.table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); }
+.table tr:last-child td { border-bottom: none; }
+.filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.filter-select { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0.4rem 0.75rem; font-family: 'Tajawal', sans-serif; font-size: 0.85rem; color: var(--text); background: white; outline: none; }
+.calendar-view { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.calendar-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+.calendar-slots { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem; }
+.calendar-col { min-width: 120px; }
+.calendar-col-header { font-size: 0.75rem; font-weight: 700; color: var(--text-soft); text-align: center; margin-bottom: 0.5rem; background: var(--bg); padding: 0.3rem; border-radius: 4px; }
+.calendar-booking { background: var(--gold-light); border-right: 3px solid var(--gold); border-radius: 4px; padding: 0.3rem 0.5rem; font-size: 0.75rem; margin-bottom: 0.35rem; cursor: pointer; }
+.calendar-booking.confirmed { background: var(--green-light); border-right-color: var(--green); }
+.calendar-booking.pending { background: var(--yellow-light); border-right-color: var(--yellow); }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modal-overlay.hidden { display: none; }
+.modal { background: white; border-radius: var(--radius); padding: 1.5rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; }
+.modal-title { font-family: 'Noto Naskh Arabic', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+.tag { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.6rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; }
+.tag-active { background: var(--green-light); color: var(--green); }
+.tag-inactive { background: var(--border); color: var(--text-soft); }
+.settings-section { margin-bottom: 2rem; }
+.settings-section h3 { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+.settings-row { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border); gap: 1rem; flex-wrap: wrap; }
+.settings-row:last-child { border-bottom: none; }
+.settings-label { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+.settings-desc { font-size: 0.8rem; color: var(--text-soft); }
+.toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: var(--border); border-radius: 50px; cursor: pointer; transition: 0.3s; }
+.toggle-slider:before { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: white; top: 3px; right: 3px; transition: 0.3s; }
+.toggle input:checked + .toggle-slider { background: var(--green); }
+.toggle input:checked + .toggle-slider:before { right: auto; left: 3px; }
+.login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--text); padding: 1rem; }
+.login-card { background: white; border-radius: var(--radius); padding: 2.5rem; width: 100%; max-width: 360px; text-align: center; }
+.login-logo { font-family: 'Noto Naskh Arabic', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 0.25rem; }
+.login-sub { font-size: 0.8rem; color: var(--text-soft); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+.search-bar { position: relative; }
+.search-bar input { padding-right: 2.5rem; }
+.search-bar .search-icon { position: absolute; top: 50%; transform: translateY(-50%); right: 0.75rem; color: var(--text-soft); pointer-events: none; }
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-soft); }
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+@media (max-width: 900px) { .admin-sidebar { width: 200px; } }
+@media (max-width: 700px) {
+  .admin-layout { flex-direction: column; }
+  .admin-sidebar { width: 100%; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; }
+  .admin-sidebar-logo { display: none; }
+  .admin-nav { display: flex; padding: 0; white-space: nowrap; }
+  .admin-nav-item { border-right: none; border-bottom: 3px solid transparent; padding: 0.75rem 1rem; }
+  .admin-nav-item.active { border-bottom-color: var(--gold); border-right-color: transparent; }
+  .admin-nav-item span { display: none; }
+  .admin-nav-item .nav-icon { font-size: 1.3rem; }
+  .admin-content { overflow-y: visible; }
+}
+.whatsapp-btn { background: #25D366; color: white; border: none; border-radius: 50px; padding: 0.75rem 1.75rem; font-size: 0.95rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: background 0.2s; }
+.whatsapp-btn:hover { background: #1EA952; }
+.alert { border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.875rem; margin: 0.75rem 0; }
+.alert-info { background: #E8F0FF; color: #3050A0; border: 1px solid rgba(48,80,160,0.2); }
+.alert-warn { background: var(--yellow-light); color: #806020; border: 1px solid rgba(196,160,48,0.3); }
+.week-grid { display: grid; grid-template-columns: 80px repeat(7, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.week-cell { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.3rem; font-size: 0.75rem; min-height: 36px; }
+.week-cell:last-child { border-right: none; }
+.week-header { background: var(--bg); font-weight: 700; color: var(--text-soft); text-align: center; padding: 0.5rem 0.25rem; font-size: 0.75rem; }
+.week-time { background: var(--bg); color: var(--text-soft); font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+.week-booking-chip { background: var(--gold-light); border-right: 2px solid var(--gold); border-radius: 3px; padding: 0.15rem 0.3rem; font-size: 0.7rem; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.week-booking-chip.confirmed { background: var(--green-light); border-right-color: var(--green); }
+.loading { display: flex; align-items: center; justify-content: center; padding: 2rem; color: var(--text-soft); gap: 0.5rem; }
+.dot-loader { display: inline-flex; gap: 4px; }
+.dot-loader span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: dotBounce 1s infinite; }
+.dot-loader span:nth-child(2) { animation-delay: 0.15s; }
+.dot-loader span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dotBounce { 0%,80%,100%{transform:scale(0.5);opacity:0.5} 40%{transform:scale(1);opacity:1} }
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div id="login-page" class="login-page" style="display:none;">
+  <div class="login-card">
+    <div class="login-logo">سبا حلم</div>
+    <div class="login-sub">HULUM SPA — لوحة الإدارة</div>
+    <div class="field-group">
+      <label class="field-label">اسم المستخدم</label>
+      <input type="text" id="login-user" class="field-input" placeholder="admin" value="admin">
+    </div>
+    <div class="field-group">
+      <label class="field-label">كلمة المرور</label>
+      <input type="password" id="login-pass" class="field-input" placeholder="••••••" value="admin123">
+    </div>
+    <div id="login-err" style="color:var(--red);font-size:0.85rem;margin-bottom:0.75rem;display:none;">بيانات الدخول غير صحيحة</div>
+    <button class="btn btn-primary btn-full" onclick="adminLogin()">دخول</button>
+    <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-soft);">
+      تجريبي: المستخدم <b>admin</b> — كلمة المرور <b>admin123</b>
+    </div>
+    <div style="margin-top:1rem;">
+      <a href="#" onclick="showPublicSite()" style="color:var(--gold-dark);font-size:0.85rem;">← العودة للموقع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PUBLIC SITE ===== -->
+<div id="public-site">
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo" onclick="scrollTo(0,0)">سبا حلم <span>HULUM SPA</span></a>
+    <div class="nav-links">
+      <a href="#" onclick="showPublicPage('home')">الرئيسية</a>
+      <a href="#" onclick="showPublicPage('services')">الخدمات</a>
+      <a href="#" onclick="scrollToContact()">تواصل معنا</a>
+      <a href="#" onclick="showPage('login-page')">لوحة الإدارة</a>
+      <button class="btn-nav-book" onclick="startBooking()">احجزي موعدك</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobileMenu()" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#" onclick="showPublicPage('home');closeMobileMenu()">الرئيسية</a>
+    <a href="#" onclick="showPublicPage('services');closeMobileMenu()">الخدمات</a>
+    <a href="#" onclick="scrollToContact();closeMobileMenu()">تواصل معنا</a>
+    <a href="#" onclick="showPage('login-page');closeMobileMenu()">لوحة الإدارة</a>
+    <button class="btn-primary btn" style="margin-top:0.5rem;justify-content:center;" onclick="startBooking();closeMobileMenu()">احجزي موعدك الآن</button>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="pub-home" class="page active">
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-ornament">✦</span>
+      <h1>تجربة عناية<br><em>تستحقينها</em></h1>
+      <p class="hero-sub" id="hero-tagline">نقدم لكِ تجربة سبا فريدة في أجواء هادئة ومتناغمة، خدمات على أعلى مستوى بأيدٍ متخصصة</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="startBooking()">احجزي موعدك الآن</button>
+        <button class="btn btn-secondary" onclick="showPublicPage('services')">تصفحي خدماتنا</button>
+      </div>
+      <div class="hero-info">
+        <div class="hero-info-item">
+          <div class="val" id="hero-hours">٩ص – ٩م</div>
+          <div class="lbl">أوقات الدوام</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="val" id="spa-location-short">—</div>
+          <div class="lbl">الموقع</div>
+        </div>
+        <div class="hero-info-item">
+          <div class="val" id="hero-phone">—</div>
+          <div class="lbl">للتواصل</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES PREVIEW -->
+    <section class="section section-alt section-center">
+      <h2 class="section-title">خدماتنا</h2>
+      <div class="divider"></div>
+      <p class="section-sub">اختاري من تشكيلة متنوعة من خدمات العناية والتجميل</p>
+      <div class="categories-grid" id="home-cats"></div>
+      <div style="margin-top:1.5rem;">
+        <button class="btn btn-secondary" onclick="showPublicPage('services')">عرض جميع الخدمات ←</button>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section-center">
+      <h2 class="section-title">عن سبا حلم</h2>
+      <div class="divider"></div>
+      <p id="spa-about-text" style="max-width:580px;margin:0 auto 1.5rem;color:var(--text-mid);line-height:1.9;">
+        مرحباً بكِ في سبا حلم — مكانكِ المفضل للراحة والعناية. نقدم خدمات متخصصة في بيئة هادئة ومريحة تنسجم مع أرقى معايير السبا.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact-section">
+      <div style="max-width:600px;margin:0 auto;display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start;">
+        <div style="flex:1;min-width:220px;">
+          <h2 class="section-title">تواصلي معنا</h2>
+          <div class="divider" style="margin-right:0;"></div>
+          <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+            <div><span style="font-size:1rem;">📍 </span><span id="spa-address" style="color:var(--text-mid);">العنوان غير محدد بعد</span></div>
+            <div><span style="font-size:1rem;">📞 </span><span id="spa-phone" style="color:var(--text-mid);">—</span></div>
+            <div><span style="font-size:1rem;">🕐 </span><span id="spa-hours-text" style="color:var(--text-mid);">—</span></div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:0.75rem;justify-content:center;margin-top:1rem;">
+          <button class="btn btn-primary btn-full" onclick="startBooking()" style="justify-content:center;">احجزي موعدك</button>
+          <a id="wa-contact-btn" href="#" class="whatsapp-btn" style="justify-content:center;">
+            <span>📱</span> تواصلي عبر واتساب
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SERVICES PAGE -->
+  <div id="pub-services" class="page">
+    <div class="section">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <h1 class="section-title">خدماتنا</h1>
+        <div class="divider"></div>
+        <p class="section-sub">اختاري الخدمة المناسبة لكِ</p>
+      </div>
+      <div class="categories-grid" id="services-cats" style="max-width:900px;margin:0 auto 2rem;"></div>
+      <div id="services-list-container" class="services-section">
+        <div id="services-list" class="services-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING WIZARD PAGE -->
+  <div id="pub-booking" class="page">
+    <div class="booking-page">
+      <div class="booking-header">
+        <h1 class="section-title">حجز موعد</h1>
+        <p style="color:var(--text-soft);font-size:0.9rem;margin-top:0.25rem;">سبا حلم — <span id="booking-spa-name">HULUM SPA</span></p>
+      </div>
+      <div class="steps-bar">
+        <div class="step-dot active" id="step-dot-1">١</div>
+        <div class="step-line" id="step-line-1"></div>
+        <div class="step-dot" id="step-dot-2">٢</div>
+        <div class="step-line" id="step-line-2"></div>
+        <div class="step-dot" id="step-dot-3">٣</div>
+        <div class="step-line" id="step-line-3"></div>
+        <div class="step-dot" id="step-dot-4">٤</div>
+        <div class="step-line" id="step-line-4"></div>
+        <div class="step-dot" id="step-dot-5">٥</div>
+      </div>
+      <div id="booking-step-1">
+        <div class="step-box">
+          <div class="step-box-title"><span class="icon">💆</span> اختاري الخدمة</div>
+          <div class="categories-grid" id="bk-cats" style="margin-bottom:1rem;"></div>
+          <div id="bk-services" class="services-list" style="display:none;"></div>
+        </div>
+        <button class="btn btn-primary btn-full" style="display:none;justify-content:center;" id="btn-step-1" onclick="goStep(2)">التالي →</button>
+      </div>
+      <div id="booking-step-2" style="display:none;">
+        <div class="step-box">
+          <div class="step-box-title"><span class="icon">👩</span> اختاري الاختصاصية</div>
+          <div id="bk-specialists" class="specialists-grid"></div>
+          <p id="bk-any-specialist" style="display:none;font-size:0.85rem;color:var(--text-soft);">هذه الخدمة لا تتطلب اختيار اختصاصية محددة</p>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="goStep(1)">← رجوع</button>
+          <button class="btn btn-primary" id="btn-step-2" onclick="goStep(3)" style="flex:1;justify-content:center;">التالي →</button>
+        </div>
+      </div>
+      <div id="booking-step-3" style="display:none;">
+        <div class="step-box">
+          <div class="step-box-title"><span class="icon">📅</span> اختاري التاريخ والوقت</div>
+          <div class="date-nav">
+            <button class="date-nav-btn" onclick="changeDate(-1)">›</button>
+            <div class="date-display" id="bk-date-display"></div>
+            <button class="date-nav-btn" onclick="changeDate(1)">‹</button>
+          </div>
+          <div id="bk-time-slots" class="time-slots">
+            <div class="loading"><div class="dot-loader"><span></span><span></span><span></span></div></div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="goStep(2)">← رجوع</button>
+          <button class="btn btn-primary" id="btn-step-3" onclick="goStep(4)" style="flex:1;justify-content:center;" disabled>التالي →</button>
+        </div>
+      </div>
+      <div id="booking-step-4" style="display:none;">
+        <div class="step-box">
+          <div class="step-box-title"><span class="icon">📝</span> بياناتكِ</div>
+          <div class="field-group">
+            <label class="field-label">الاسم الكامل *</label>
+            <input type="text" id="bk-name" class="field-input" placeholder="اسمكِ الكريم">
+          </div>
+          <div class="field-group">
+            <label class="field-label">رقم الهاتف *</label>
+            <input type="tel" id="bk-phone" class="field-input" placeholder="07XXXXXXXXX">
+          </div>
+          <div class="field-group">
+            <label class="field-label">ملاحظات (اختياري)</label>
+            <textarea id="bk-notes" class="field-input" placeholder="أي طلبات خاصة أو ملاحظات..."></textarea>
+          </div>
+          <div id="bk-policy-box" class="policy-box"></div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="goStep(3)">← رجوع</button>
+          <button class="btn btn-primary" onclick="goStep(5)" style="flex:1;justify-content:center;">مراجعة الطلب →</button>
+        </div>
+      </div>
+      <div id="booking-step-5" style="display:none;">
+        <div class="step-box">
+          <div class="step-box-title"><span class="icon">✅</span> مراجعة طلبكِ</div>
+          <div class="booking-summary" id="bk-summary"></div>
+          <div class="alert alert-warn" style="margin-top:1rem;">
+            سيبقى موعدكِ محجوزاً مؤقتاً لمدة <b id="hold-minutes">30</b> دقيقة، يتحول إلى مؤكد بعد موافقة الصالون.
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="goStep(4)">← رجوع</button>
+          <button class="btn btn-primary" id="btn-submit-booking" onclick="submitBooking()" style="flex:1;justify-content:center;">إرسال الطلب ✓</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS PAGE -->
+  <div id="pub-success" class="page">
+    <div class="booking-page">
+      <div class="success-card" id="success-content">
+        <span class="success-icon">🌸</span>
+        <div class="success-title">تم إرسال طلبكِ!</div>
+        <div id="success-booking-num" class="booking-number"></div>
+        <div id="success-status" class="status-badge status-pending" style="margin-bottom:1rem;">⏳ بانتظار التأكيد</div>
+        <div id="success-summary" style="text-align:right;margin-bottom:1.5rem;font-size:0.9rem;color:var(--text-mid);"></div>
+        <div class="alert alert-info">سيصلكِ تأكيد الموعد من الصالون. يمكنكِ التواصل عبر واتساب للاستفسار.</div>
+        <div style="display:flex;gap:0.75rem;margin-top:1.25rem;flex-wrap:wrap;">
+          <a id="wa-booking-link" href="#" class="whatsapp-btn" style="flex:1;justify-content:center;min-width:140px;" target="_blank">📱 واتساب</a>
+          <button class="btn btn-secondary" style="flex:1;justify-content:center;min-width:140px;" onclick="startBooking()">حجز جديد</button>
+        </div>
+        <button class="btn btn-secondary btn-full" style="margin-top:0.75rem;" onclick="showPublicPage('home')">العودة للرئيسية</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ADMIN SITE ===== -->
+<div id="admin-site" style="display:none;">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-logo">
+        <h2>سبا حلم</h2>
+        <span>ADMIN PANEL</span>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-item active" onclick="showAdminPage('dashboard')"><span class="nav-icon">🏠</span><span>الرئيسية</span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('requests')"><span class="nav-icon">⏳</span><span>الطلبات</span><span id="pending-badge" style="display:none;background:var(--rose);color:white;border-radius:50px;font-size:0.7rem;padding:0.1rem 0.4rem;margin-right:auto;"></span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('bookings')"><span class="nav-icon">📋</span><span>الحجوزات</span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('calendar')"><span class="nav-icon">📅</span><span>التقويم</span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('services')"><span class="nav-icon">💆</span><span>الخدمات</span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('staff')"><span class="nav-icon">👩</span><span>الاختصاصيات</span></div>
+        <div class="admin-nav-item" onclick="showAdminPage('settings')"><span class="nav-icon">⚙️</span><span>الإعدادات</span></div>
+      </nav>
+      <div style="padding:1rem;border-top:1px solid rgba(255,255,255,0.1);">
+        <button style="width:100%;background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);border-radius:var(--radius-sm);padding:0.5rem;font-size:0.8rem;cursor:pointer;" onclick="adminLogout()">تسجيل الخروج</button>
+      </div>
+    </aside>
+    <div class="admin-content">
+      <div class="admin-topbar">
+        <h1 id="admin-page-title">لوحة التحكم</h1>
+        <span id="admin-today" style="font-size:0.85rem;color:var(--text-soft);"></span>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div id="adm-dashboard" class="admin-page active">
+        <div class="admin-page" style="display:block;padding:1.5rem;">
+          <div class="stats-grid" id="dash-stats"></div>
+          <div class="admin-card">
+            <div class="admin-card-header">طلبات اليوم المنتظرة <span id="dash-pending-count" style="color:var(--yellow);"></span></div>
+            <div class="admin-card-body" id="dash-pending-list"><div class="loading"><div class="dot-loader"><span></span><span></span><span></span></div></div></div>
+          </div>
+          <div class="admin-card" style="margin-top:1rem;">
+            <div class="admin-card-header">حجوزات اليوم المؤكدة</div>
+            <div class="admin-card-body" id="dash-confirmed-list"><div class="loading"><div class="dot-loader"><span></span><span></span><span></span></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REQUESTS -->
+      <div id="adm-requests" class="admin-page">
+        <div style="padding:1.5rem;">
+          <div class="filter-bar">
+            <select class="filter-select" id="req-filter-status" onchange="renderRequests()">
+              <option value="">جميع الطلبات</option>
+              <option value="pending">بانتظار التأكيد</option>
+              <option value="confirmed">مؤكد</option>
+              <option value="rejected">مرفوض</option>
+              <option value="cancelled">ملغي</option>
+              <option value="expired">منتهي</option>
+            </select>
+            <input type="text" class="filter-select" id="req-search" placeholder="بحث باسم أو هاتف..." oninput="renderRequests()" style="flex:1;min-width:140px;">
+          </div>
+          <div id="requests-list"></div>
+        </div>
+      </div>
+
+      <!-- BOOKINGS -->
+      <div id="adm-bookings" class="admin-page">
+        <div style="padding:1.5rem;">
+          <div style="margin-bottom:1rem;">
+            <button class="btn btn-primary btn-sm" onclick="openAddBookingModal()">+ حجز جديد (هاتف / حضوري)</button>
+          </div>
+          <div class="filter-bar">
+            <select class="filter-select" id="book-filter-status" onchange="renderBookings()">
+              <option value="">كل الحالات</option>
+              <option value="pending">بانتظار التأكيد</option>
+              <option value="confirmed">مؤكد</option>
+              <option value="rejected">مرفوض</option>
+              <option value="cancelled">ملغي</option>
+              <option value="expired">منتهي</option>
+            </select>
+            <input type="date" class="filter-select" id="book-filter-date" onchange="renderBookings()">
+            <input type="text" class="filter-select" id="book-search" placeholder="بحث..." oninput="renderBookings()" style="flex:1;">
+          </div>
+          <div id="bookings-list"></div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div id="adm-calendar" class="admin-page">
+        <div style="padding:1.5rem;">
+          <div class="filter-bar">
+            <button class="date-nav-btn" onclick="changeCalendarDate(-1)">›</button>
+            <input type="date" id="cal-date" class="filter-select" onchange="renderCalendar()">
+            <button class="date-nav-btn" onclick="changeCalendarDate(1)">‹</button>
+            <select class="filter-select" id="cal-view-type" onchange="renderCalendar()">
+              <option value="day">يومي</option>
+              <option value="week">أسبوعي</option>
+            </select>
+          </div>
+          <div id="calendar-view"></div>
+        </div>
+      </div>
+
+      <!-- SERVICES ADMIN -->
+      <div id="adm-services" class="admin-page">
+        <div style="padding:1.5rem;">
+          <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="openCategoryModal()">+ قسم جديد</button>
+            <button class="btn btn-secondary btn-sm" onclick="openServiceModal()">+ خدمة جديدة</button>
+          </div>
+          <div id="services-admin-list"></div>
+        </div>
+      </div>
+
+      <!-- STAFF ADMIN -->
+      <div id="adm-staff" class="admin-page">
+        <div style="padding:1.5rem;">
+          <button class="btn btn-primary btn-sm" style="margin-bottom:1rem;" onclick="openStaffModal()">+ اختصاصية جديدة</button>
+          <div id="staff-list"></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div id="adm-settings" class="admin-page">
+        <div style="padding:1.5rem;max-width:680px;">
+          <div class="admin-card">
+            <div class="admin-card-header">معلومات الصالون</div>
+            <div class="admin-card-body">
+              <div class="settings-section">
+                <div class="field-group">
+                  <label class="field-label">نبذة عن الصالون</label>
+                  <textarea id="set-about" class="field-input" rows="3" placeholder="نص ترحيبي يظهر في الصفحة الرئيسية..."></textarea>
+                </div>
+                <div class="form-grid-2">
+                  <div class="field-group">
+                    <label class="field-label">العنوان</label>
+                    <input type="text" id="set-address" class="field-input" placeholder="المدينة، الشارع">
+                  </div>
+                  <div class="field-group">
+                    <label class="field-label">رقم الهاتف</label>
+                    <input type="text" id="set-phone" class="field-input" placeholder="+964...">
+                  </div>
+                </div>
+                <div class="form-grid-2">
+                  <div class="field-group">
+                    <label class="field-label">رقم واتساب</label>
+                    <input type="text" id="set-wa" class="field-input" placeholder="9647XXXXXXXXX">
+                  </div>
+                  <div class="field-group">
+                    <label class="field-label">ساعات الدوام</label>
+                    <input type="text" id="set-hours" class="field-input" placeholder="٩ص – ٩م يومياً">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header">إعدادات الحجز</div>
+            <div class="admin-card-body">
+              <div class="settings-row">
+                <div><div class="settings-label">وقت الانتهاء التلقائي</div><div class="settings-desc">المدة التي ينتهي بعدها طلب الحجز غير المؤكد</div></div>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <input type="number" id="set-expiry" class="field-input" style="width:70px;" value="30" min="5" max="120">
+                  <span style="font-size:0.85rem;color:var(--text-soft);">دقيقة</span>
+                </div>
+              </div>
+              <div class="settings-row">
+                <div><div class="settings-label">الفاصل الزمني بين المواعيد</div><div class="settings-desc">الوحدة الزمنية لعرض الأوقات المتاحة</div></div>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <select id="set-slot" class="filter-select">
+                    <option value="15">15 دقيقة</option>
+                    <option value="30" selected>30 دقيقة</option>
+                    <option value="45">45 دقيقة</option>
+                    <option value="60">ساعة</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-group" style="margin-top:0.75rem;">
+                <label class="field-label">سياسة الحجز والإلغاء</label>
+                <textarea id="set-policy" class="field-input" rows="3" placeholder="سياسة التأخير والإلغاء التي تظهر للزبونة قبل إرسال الطلب..."></textarea>
+              </div>
+              <div class="settings-row">
+                <div><div class="settings-label">أيام الدوام</div></div>
+                <div style="display:flex;gap:0.3rem;flex-wrap:wrap;">
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="0" style="accent-color:var(--gold);">أحد</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="1" checked style="accent-color:var(--gold);">إثنين</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="2" checked style="accent-color:var(--gold);">ثلاثاء</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="3" checked style="accent-color:var(--gold);">أربعاء</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="4" checked style="accent-color:var(--gold);">خميس</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="5" checked style="accent-color:var(--gold);">جمعة</label>
+                  <label style="font-size:0.8rem;display:flex;align-items:center;gap:0.25rem;cursor:pointer;"><input type="checkbox" class="work-day" value="6" checked style="accent-color:var(--gold);">سبت</label>
+                </div>
+              </div>
+              <div class="form-grid-2" style="margin-top:0.75rem;">
+                <div class="field-group">
+                  <label class="field-label">بداية الدوام</label>
+                  <input type="time" id="set-open" class="field-input" value="09:00">
+                </div>
+                <div class="field-group">
+                  <label class="field-label">نهاية الدوام</label>
+                  <input type="time" id="set-close" class="field-input" value="21:00">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" style="margin-top:1rem;" onclick="saveSettings()">حفظ الإعدادات</button>
+          <div id="settings-saved" style="display:none;text-align:center;color:var(--green);font-size:0.9rem;margin-top:0.5rem;">✓ تم حفظ الإعدادات</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay hidden" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<script>
+// ========================================================
+// STATE
+// ========================================================
+let DB = null;
+let USER = null;
+let settings = {
+  about: 'مرحباً بكِ في سبا حلم — مكانكِ المفضل للراحة والعناية. نقدم خدمات متخصصة في بيئة هادئة ومريحة.',
+  address: '',
+  phone: '',
+  whatsapp: '',
+  hours: '٩ صباحاً – ٩ مساءً',
+  expiryMinutes: 30,
+  slotMinutes: 30,
+  policy: 'يرجى الحضور قبل موعدكِ بـ 5 دقائق. في حال التأخر أو الإلغاء يرجى إشعارنا قبل ساعة.',
+  workDays: [1,2,3,4,5,6],
+  openTime: '09:00',
+  closeTime: '21:00'
+};
+let categories = [];
+let services = [];
+let staff = [];
+let bookings = [];
+let adminLoggedIn = false;
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = 'admin123';
+
+// Booking wizard state
+let bk = {
+  cat: null, service: null, specialist: null,
+  date: new Date(), timeSlot: null,
+  name:'', phone:'', notes:'', step:1
+};
+let activeCalendarDate = new Date();
+let expiryIntervals = {};
+
+// ========================================================
+// DB SETUP
+// ========================================================
+async function initDB() {
+  DB = await window.claude.use('db');
+  if (!DB) {
+    console.warn('DB unavailable — using localStorage fallback');
+    initFallback();
+    return;
+  }
+  await loadAll();
+}
+
+async function loadAll() {
+  try {
+    const [catDoc, svcDoc, staffDoc, bkDoc, setDoc] = await Promise.all([
+      safeGet('data','categories'),
+      safeGet('data','services'),
+      safeGet('data','staff'),
+      safeGet('bookings','all'),
+      safeGet('config','settings')
+    ]);
+    categories = catDoc?.data || getDefaultCategories();
+    services = svcDoc?.data || getDefaultServices();
+    staff = staffDoc?.data || getDefaultStaff();
+    bookings = bkDoc?.data || [];
+    if (setDoc?.data) Object.assign(settings, setDoc.data);
+  } catch(e) {
+    categories = getDefaultCategories();
+    services = getDefaultServices();
+    staff = getDefaultStaff();
+  }
+  applySettings();
+  renderPublicUI();
+}
+
+async function safeGet(col, doc) {
+  try {
+    const r = await DB.doc(col+'/'+doc).get();
+    return r.exists ? r : null;
+  } catch { return null; }
+}
+
+async function saveToDb(col, doc, data) {
+  if (!DB) { saveLocalFallback(col+'/'+doc, data); return; }
+  try { await DB.doc(col+'/'+doc).set(data); } catch(e) { console.error('DB save error', e); }
+}
+
+// Fallback storage (when DB unavailable)
+function initFallback() {
+  try {
+    categories = JSON.parse(localStorage.getItem('hulum_cats')) || getDefaultCategories();
+    services = JSON.parse(localStorage.getItem('hulum_svcs')) || getDefaultServices();
+    staff = JSON.parse(localStorage.getItem('hulum_staff')) || getDefaultStaff();
+    bookings = JSON.parse(localStorage.getItem('hulum_bookings')) || [];
+    const s = JSON.parse(localStorage.getItem('hulum_settings'));
+    if (s) Object.assign(settings, s);
+  } catch {
+    categories = getDefaultCategories(); services = getDefaultServices(); staff = getDefaultStaff();
+  }
+  applySettings(); renderPublicUI();
+}
+function saveLocalFallback(key, val) {
+  try { localStorage.setItem('hulum_'+key.replace('/','_'), JSON.stringify(val)); } catch{}
+}
+async function persistCategories() { await saveToDb('data','categories',categories); }
+async function persistServices() { await saveToDb('data','services',services); }
+async function persistStaff() { await saveToDb('data','staff',staff); }
+async function persistBookings() { await saveToDb('bookings','all',bookings); }
+async function persistSettings() { await saveToDb('config','settings',settings); }
+
+// ========================================================
+// DEFAULT DATA
+// ========================================================
+function getDefaultCategories() {
+  return [
+    {id:'nail', name:'الأظافر', icon:'💅', active:true, requiresSpecialist:true},
+    {id:'hair', name:'الشعر', icon:'💇', active:true, requiresSpecialist:true},
+    {id:'makeup', name:'المكياج', icon:'💄', active:true, requiresSpecialist:false},
+    {id:'skin', name:'العناية بالبشرة', icon:'✨', active:true, requiresSpecialist:false}
+  ];
+}
+function getDefaultServices() {
+  return [
+    {id:'s1', catId:'nail', name:'مناكير كلاسيكي', desc:'طلاء أظافر احترافي بأفضل العلامات', price:15000, duration:30, icon:'💅', active:true},
+    {id:'s2', catId:'nail', name:'جلفرة أظافر', desc:'تمديد وتشكيل الأظافر بالجل', price:35000, duration:60, icon:'💅', active:true},
+    {id:'s3', catId:'hair', name:'قص الشعر', desc:'قص احترافي حسب شكل الوجه', price:20000, duration:45, icon:'✂️', active:true},
+    {id:'s4', catId:'hair', name:'كيرياتين', desc:'علاج كيرياتين لتنعيم الشعر', price:80000, duration:120, icon:'💇', active:true},
+    {id:'s5', catId:'makeup', name:'مكياج سهرة', desc:'مكياج متكامل للمناسبات', price:50000, duration:60, icon:'💄', active:true},
+    {id:'s6', catId:'skin', name:'تنظيف بشرة', desc:'تنظيف عميق وترطيب للبشرة', price:40000, duration:60, icon:'✨', active:true}
+  ];
+}
+function getDefaultStaff() {
+  return [
+    {id:'st1', name:'فاطمة', icon:'👩', catIds:['nail','hair'], serviceIds:['s1','s2','s3'], active:true, workStart:'09:00', workEnd:'17:00'},
+    {id:'st2', name:'زينب', icon:'👩', catIds:['nail'], serviceIds:['s1','s2'], active:true, workStart:'12:00', workEnd:'21:00'},
+    {id:'st3', name:'مريم', icon:'👩', catIds:['hair','makeup','skin'], serviceIds:['s3','s4','s5','s6'], active:true, workStart:'10:00', workEnd:'20:00'}
+  ];
+}
+
+// ========================================================
+// NAVIGATION
+// ========================================================
+function showPage(id) {
+  document.getElementById('public-site').style.display = 'none';
+  document.getElementById('admin-site').style.display = 'none';
+  document.getElementById('login-page').style.display = 'none';
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'flex';
+}
+function showPublicSite() {
+  document.getElementById('public-site').style.display = 'block';
+  document.getElementById('admin-site').style.display = 'none';
+  document.getElementById('login-page').style.display = 'none';
+}
+function showPublicPage(name) {
+  document.querySelectorAll('#public-site .page').forEach(p=>p.classList.remove('active'));
+  const el = document.getElementById('pub-'+name);
+  if (el) { el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+  if (name === 'services') renderServicesPage();
+  window.scrollTo(0,0);
+}
+function startBooking(catId, serviceId) {
+  bk = { cat:null, service:null, specialist:null, date:new Date(), timeSlot:null, name:'', phone:'', notes:'', step:1 };
+  if (catId) { bk.cat = catId; }
+  if (serviceId) { bk.service = serviceId; }
+  showPublicPage('booking');
+  renderBookingStep(1);
+}
+function scrollToContact() {
+  document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});
+}
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ========================================================
+// PUBLIC UI RENDERING
+// ========================================================
+function applySettings() {
+  const el = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val||'—'; };
+  el('hero-hours', settings.hours);
+  el('spa-location-short', settings.address ? settings.address.split('،')[0]||settings.address : '—');
+  el('hero-phone', settings.phone||'—');
+  el('spa-address', settings.address||'العنوان غير محدد');
+  el('spa-phone', settings.phone||'—');
+  el('spa-hours-text', settings.hours||'—');
+  const tEl = document.getElementById('hero-tagline');
+  if (settings.about) tEl.textContent = settings.about.substring(0,100)+(settings.about.length>100?'...':'');
+  // WA button
+  const waBtn = document.getElementById('wa-contact-btn');
+  if (waBtn) waBtn.href = settings.whatsapp ? `https://wa.me/${settings.whatsapp.replace(/\D/g,'')}` : '#';
+  const hm = document.getElementById('hold-minutes');
+  if (hm) hm.textContent = settings.expiryMinutes||30;
+}
+
+function renderPublicUI() {
+  renderHomeCats();
+  renderServicesPage();
+}
+
+function renderHomeCats() {
+  const el = document.getElementById('home-cats');
+  if (!el) return;
+  const active = categories.filter(c=>c.active);
+  el.innerHTML = active.map(c => {
+    const count = services.filter(s=>s.catId===c.id&&s.active).length;
+    return `<div class="cat-card" onclick="showPublicPage('services');setActiveServCat('${c.id}')">
+      <span class="cat-icon">${c.icon}</span>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-count">${count} خدمة</div>
+    </div>`;
+  }).join('');
+}
+
+let activeServCat = null;
+function setActiveServCat(id) {
+  activeServCat = id;
+  renderServicesPage();
+}
+function renderServicesPage() {
+  const catsEl = document.getElementById('services-cats');
+  const listEl = document.getElementById('services-list');
+  if (!catsEl || !listEl) return;
+  const active = categories.filter(c=>c.active);
+  if (!activeServCat && active.length) activeServCat = active[0].id;
+  catsEl.innerHTML = active.map(c => `
+    <div class="cat-card ${activeServCat===c.id?'active':''}" onclick="setActiveServCat('${c.id}');renderServicesPage()">
+      <span class="cat-icon">${c.icon}</span>
+      <div class="cat-name">${c.name}</div>
+    </div>`).join('');
+  const svcs = services.filter(s=>s.catId===activeServCat&&s.active);
+  listEl.innerHTML = svcs.length ? svcs.map(s=>`
+    <div class="service-card">
+      <div class="service-img">${s.icon||'💆'}</div>
+      <div class="service-body">
+        <div class="service-name">${s.name}</div>
+        <div class="service-desc">${s.desc||''}</div>
+        <div class="service-meta">
+          <span class="service-price">${formatPrice(s.price)}</span>
+          <span class="service-duration">⏱ ${s.duration} دقيقة</span>
+        </div>
+        <button class="btn-book-service" onclick="startBooking('${s.catId}','${s.id}')">احجزي هذه الخدمة</button>
+      </div>
+    </div>`).join('') :
+    `<div class="empty-state"><div class="empty-icon">💆</div><p>لا توجد خدمات في هذا القسم حالياً</p></div>`;
+}
+
+// ========================================================
+// BOOKING WIZARD
+// ========================================================
+function renderBookingStep(step) {
+  bk.step = step;
+  for (let i=1;i<=5;i++) {
+    const el = document.getElementById('booking-step-'+i);
+    if (el) el.style.display = i===step ? 'block' : 'none';
+    const dot = document.getElementById('step-dot-'+i);
+    if (dot) {
+      dot.className = 'step-dot' + (i<step?' done':i===step?' active':'');
+    }
+    const line = document.getElementById('step-line-'+i);
+    if (line) line.className = 'step-line' + (i<step?' done':'');
+  }
+  if (step===1) renderBkStep1();
+  if (step===2) renderBkStep2();
+  if (step===3) renderBkStep3();
+  if (step===4) renderBkStep4();
+  if (step===5) renderBkStep5();
+}
+
+function renderBkStep1() {
+  const cats = categories.filter(c=>c.active);
+  const el = document.getElementById('bk-cats');
+  el.innerHTML = cats.map(c=>`
+    <div class="cat-card ${bk.cat===c.id?'active':''}" onclick="selectBkCat('${c.id}')">
+      <span class="cat-icon">${c.icon}</span>
+      <div class="cat-name">${c.name}</div>
+    </div>`).join('');
+  if (bk.cat) renderBkServicesForCat();
+  document.getElementById('btn-step-1').style.display = bk.service ? 'flex' : 'none';
+}
+
+function selectBkCat(id) {
+  bk.cat = id; bk.service = null; bk.specialist = null;
+  document.querySelectorAll('#bk-cats .cat-card').forEach(c=>{
+    c.classList.toggle('active', c.querySelector('.cat-name').textContent === categories.find(x=>x.id===id)?.name);
+  });
+  renderBkServicesForCat();
+  document.getElementById('btn-step-1').style.display = 'none';
+}
+
+function renderBkServicesForCat() {
+  const listEl = document.getElementById('bk-services');
+  const svcs = services.filter(s=>s.catId===bk.cat&&s.active);
+  listEl.style.display = 'grid';
+  listEl.innerHTML = svcs.map(s=>`
+    <div class="service-card ${bk.service===s.id?'':''}" style="${bk.service===s.id?'border-color:var(--gold);':''}">
+      <div class="service-img">${s.icon||'💆'}</div>
+      <div class="service-body">
+        <div class="service-name">${s.name}</div>
+        <div class="service-desc">${s.desc||''}</div>
+        <div class="service-meta">
+          <span class="service-price">${formatPrice(s.price)}</span>
+          <span class="service-duration">⏱ ${s.duration} دقيقة</span>
+        </div>
+        <button class="btn-book-service ${bk.service===s.id?'':''}
+          " style="${bk.service===s.id?'background:var(--gold);color:white;':''}"
+          onclick="selectBkService('${s.id}')">
+          ${bk.service===s.id ? '✓ محددة' : 'اختيار هذه الخدمة'}
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function selectBkService(id) {
+  bk.service = id; bk.specialist = null;
+  renderBkServicesForCat();
+  document.getElementById('btn-step-1').style.display = 'flex';
+}
+
+function renderBkStep2() {
+  const cat = categories.find(c=>c.id===bk.cat);
+  const svc = services.find(s=>s.id===bk.service);
+  const needsSpec = cat?.requiresSpecialist;
+  const specList = staff.filter(s=>s.active && s.serviceIds.includes(bk.service));
+  const el = document.getElementById('bk-specialists');
+  const anyEl = document.getElementById('bk-any-specialist');
+  if (!needsSpec || specList.length === 0) {
+    el.innerHTML = '';
+    anyEl.style.display = 'block';
+    bk.specialist = 'any';
+    return;
+  }
+  anyEl.style.display = 'none';
+  el.innerHTML = `
+    <div class="spec-card ${bk.specialist==='any'?'selected':''}" onclick="selectSpecialist('any')">
+      <div class="spec-avatar">🌸</div>
+      <div class="spec-name">أي اختصاصية</div>
+      <div class="spec-role">أول متاحة</div>
+    </div>
+    ` + specList.map(s=>`
+    <div class="spec-card ${bk.specialist===s.id?'selected':''}" onclick="selectSpecialist('${s.id}')">
+      <div class="spec-avatar">${s.icon||'👩'}</div>
+      <div class="spec-name">${s.name}</div>
+      <div class="spec-role">اختصاصية</div>
+    </div>`).join('');
+}
+
+function selectSpecialist(id) {
+  bk.specialist = id;
+  document.querySelectorAll('#bk-specialists .spec-card').forEach(c=>c.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+}
+
+function renderBkStep3() {
+  updateDateDisplay();
+  loadTimeSlots();
+}
+function updateDateDisplay() {
+  const days = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  const d = bk.date;
+  document.getElementById('bk-date-display').textContent = `${days[d.getDay()]}، ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+function changeDate(n) {
+  const d = new Date(bk.date);
+  d.setDate(d.getDate() + n);
+  if (d < new Date(new Date().setHours(0,0,0,0))) return;
+  bk.date = d; bk.timeSlot = null;
+  updateDateDisplay(); loadTimeSlots();
+  document.getElementById('btn-step-3').disabled = true;
+}
+
+function loadTimeSlots() {
+  const el = document.getElementById('bk-time-slots');
+  el.innerHTML = '<div class="loading"><div class="dot-loader"><span></span><span></span><span></span></div></div>';
+  // Generate time slots from settings
+  setTimeout(() => {
+    const slots = generateSlots();
+    const takenSlots = getTakenSlots(bk.date, bk.specialist, bk.service);
+    if (!slots.length) {
+      el.innerHTML = '<div class="empty-state"><div class="empty-icon">🚫</div><p>لا تتوفر مواعيد في هذا اليوم</p></div>';
+      return;
+    }
+    el.innerHTML = slots.map(t => {
+      const taken = isSlotTaken(t, takenSlots, services.find(s=>s.id===bk.service)?.duration||30);
+      return `<div class="time-slot ${t===bk.timeSlot?'selected':''} ${taken?'taken':''}" 
+        onclick="${taken?'':`selectTimeSlot('${t}')`}">${t}</div>`;
+    }).join('');
+  }, 400);
+}
+
+function generateSlots() {
+  const dayNum = bk.date.getDay();
+  if (!settings.workDays.includes(dayNum)) return [];
+  const [oh,om] = settings.openTime.split(':').map(Number);
+  const [ch,cm] = settings.closeTime.split(':').map(Number);
+  const slots = [];
+  let cur = oh*60+om;
+  const end = ch*60+cm;
+  const step = parseInt(settings.slotMinutes)||30;
+  while (cur + step <= end) {
+    const hh = Math.floor(cur/60).toString().padStart(2,'0');
+    const mm = (cur%60).toString().padStart(2,'0');
+    slots.push(`${hh}:${mm}`);
+    cur += step;
+  }
+  return slots;
+}
+
+function getTakenSlots(date, specId, serviceId) {
+  // Check expiry first
+  checkExpiredBookings();
+  const dateStr = formatDate(date);
+  return bookings.filter(b => {
+    if (b.date !== dateStr) return false;
+    if (b.status === 'rejected' || b.status === 'cancelled' || b.status === 'expired') return false;
+    if (specId && specId !== 'any' && b.specialistId && b.specialistId !== specId) return false;
+    return true;
+  });
+}
+
+function isSlotTaken(time, takenBookings, serviceDuration) {
+  const [th,tm] = time.split(':').map(Number);
+  const slotStart = th*60+tm;
+  const slotEnd = slotStart + (serviceDuration||30);
+  for (const b of takenBookings) {
+    const [bh,bm] = b.time.split(':').map(Number);
+    const bStart = bh*60+bm;
+    const bEnd = bStart + (b.duration||30);
+    if (slotStart < bEnd && slotEnd > bStart) return true;
+  }
+  return false;
+}
+
+function selectTimeSlot(t) {
+  bk.timeSlot = t;
+  document.querySelectorAll('.time-slot').forEach(el=>{
+    el.classList.toggle('selected', el.textContent.trim()===t);
+  });
+  document.getElementById('btn-step-3').disabled = false;
+}
+
+function renderBkStep4() {
+  const policyEl = document.getElementById('bk-policy-box');
+  if (settings.policy) policyEl.textContent = settings.policy;
+  else policyEl.style.display = 'none';
+}
+
+function renderBkStep5() {
+  const cat = categories.find(c=>c.id===bk.cat);
+  const svc = services.find(s=>s.id===bk.service);
+  const spec = bk.specialist && bk.specialist !== 'any' ? staff.find(s=>s.id===bk.specialist) : null;
+  const el = document.getElementById('bk-summary');
+  el.innerHTML = `
+    <div class="summary-row"><span class="summary-label">الخدمة</span><span class="summary-value">${svc?.name||'—'}</span></div>
+    <div class="summary-row"><span class="summary-label">القسم</span><span class="summary-value">${cat?.name||'—'}</span></div>
+    <div class="summary-row"><span class="summary-label">الاختصاصية</span><span class="summary-value">${spec?.name||'أي اختصاصية'}</span></div>
+    <div class="summary-row"><span class="summary-label">التاريخ</span><span class="summary-value">${formatDateAr(bk.date)}</span></div>
+    <div class="summary-row"><span class="summary-label">الوقت</span><span class="summary-value">${bk.timeSlot||'—'}</span></div>
+    <div class="summary-row"><span class="summary-label">المدة</span><span class="summary-value">${svc?.duration||0} دقيقة</span></div>
+    <div class="summary-row"><span class="summary-label">السعر</span><span class="summary-value">${formatPrice(svc?.price)}</span></div>
+  `;
+}
+
+function goStep(n) {
+  if (n===2) {
+    if (!bk.service) { alert('يرجى اختيار الخدمة أولاً'); return; }
+    // If category requires specialist but no specialist chosen yet, check
+    const cat = categories.find(c=>c.id===bk.cat);
+    const specList = staff.filter(s=>s.active && s.serviceIds.includes(bk.service));
+    if (!cat?.requiresSpecialist || specList.length===0) { bk.specialist = 'any'; }
+  }
+  if (n===3) {
+    const cat = categories.find(c=>c.id===bk.cat);
+    if (!bk.specialist) { alert('يرجى اختيار الاختصاصية'); return; }
+  }
+  if (n===4) {
+    if (!bk.timeSlot) { alert('يرجى اختيار وقت المتاح'); return; }
+  }
+  if (n===5) {
+    bk.name = document.getElementById('bk-name').value.trim();
+    bk.phone = document.getElementById('bk-phone').value.trim();
+    bk.notes = document.getElementById('bk-notes').value.trim();
+    if (!bk.name) { alert('يرجى إدخال الاسم'); return; }
+    if (!bk.phone) { alert('يرجى إدخال رقم الهاتف'); return; }
+  }
+  renderBookingStep(n);
+}
+
+async function submitBooking() {
+  const btn = document.getElementById('btn-submit-booking');
+  btn.disabled = true; btn.textContent = 'جاري الإرسال...';
+  
+  // Double-check slot is still available
+  checkExpiredBookings();
+  const svc = services.find(s=>s.id===bk.service);
+  const takenSlots = getTakenSlots(bk.date, bk.specialist === 'any' ? null : bk.specialist, bk.service);
+  if (isSlotTaken(bk.timeSlot, takenSlots, svc?.duration||30)) {
+    btn.disabled=false; btn.textContent='إرسال الطلب ✓';
+    alert('عذراً، هذا الوقت أصبح محجوزاً. يرجى اختيار وقت آخر.');
+    renderBookingStep(3);
+    return;
+  }
+
+  const id = 'BK' + Date.now().toString().slice(-6) + Math.random().toString(36).slice(2,4).toUpperCase();
+  const now = new Date();
+  const expiry = new Date(now.getTime() + (settings.expiryMinutes||30)*60*1000);
+  const cat = categories.find(c=>c.id===bk.cat);
+  const spec = staff.find(s=>s.id===bk.specialist);
+  
+  const booking = {
+    id, status:'pending',
+    clientName: bk.name, clientPhone: bk.phone, notes: bk.notes,
+    catId: bk.cat, catName: cat?.name||'',
+    serviceId: bk.service, serviceName: svc?.name||'', price: svc?.price||0, duration: svc?.duration||30,
+    specialistId: bk.specialist === 'any' ? null : bk.specialist,
+    specialistName: bk.specialist === 'any' ? 'أي اختصاصية' : spec?.name||'',
+    date: formatDate(bk.date), time: bk.timeSlot,
+    createdAt: now.toISOString(), expiresAt: expiry.toISOString(),
+    log: [{action:'created', at: now.toISOString()}]
+  };
+  
+  bookings.push(booking);
+  await persistBookings();
+  
+  // Show success
+  showSuccessPage(booking);
+  btn.disabled=false; btn.textContent='إرسال الطلب ✓';
+}
+
+function showSuccessPage(booking) {
+  document.getElementById('success-booking-num').textContent = '#' + booking.id;
+  document.getElementById('success-status').textContent = '⏳ بانتظار التأكيد';
+  document.getElementById('success-status').className = 'status-badge status-pending';
+  const svc = services.find(s=>s.id===booking.serviceId);
+  const spec = booking.specialistId ? staff.find(s=>s.id===booking.specialistId) : null;
+  document.getElementById('success-summary').innerHTML = `
+    <div style="line-height:2;">
+      <b>الخدمة:</b> ${booking.serviceName}<br>
+      <b>الاختصاصية:</b> ${spec?.name||'أي اختصاصية'}<br>
+      <b>التاريخ:</b> ${formatDateAr(new Date(booking.date))}<br>
+      <b>الوقت:</b> ${booking.time}<br>
+      <b>السعر:</b> ${formatPrice(booking.price)}
+    </div>`;
+  // WA link
+  const waMsg = buildWAMessage(booking);
+  const waNum = (settings.whatsapp||'').replace(/\D/g,'');
+  const waLink = document.getElementById('wa-booking-link');
+  if (waNum) waLink.href = `https://wa.me/${waNum}?text=${encodeURIComponent(waMsg)}`;
+  else waLink.style.display = 'none';
+  showPublicPage('success');
+}
+
+function buildWAMessage(b) {
+  return `مرحباً سبا حلم 🌸\n\nأرسلتُ طلب حجز:\n` +
+    `رقم الطلب: #${b.id}\n` +
+    `الاسم: ${b.clientName}\n` +
+    `الهاتف: ${b.clientPhone}\n` +
+    `القسم: ${b.catName}\n` +
+    `الخدمة: ${b.serviceName}\n` +
+    `الاختصاصية: ${b.specialistName}\n` +
+    `التاريخ: ${b.date}\n` +
+    `الوقت: ${b.time}\n` +
+    `السعر: ${formatPrice(b.price)}\n\n` +
+    `أرجو التأكيد، شكراً 🙏`;
+}
+
+// ========================================================
+// ADMIN AUTH
+// ========================================================
+function adminLogin() {
+  const u = document.getElementById('login-user').value;
+  const p = document.getElementById('login-pass').value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    adminLoggedIn = true;
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('admin-site').style.display = 'flex';
+    document.getElementById('public-site').style.display = 'none';
+    document.getElementById('login-err').style.display = 'none';
+    initAdminUI();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+  }
+}
+function adminLogout() {
+  adminLoggedIn = false;
+  document.getElementById('admin-site').style.display = 'none';
+  document.getElementById('public-site').style.display = 'block';
+}
+
+// ========================================================
+// ADMIN UI
+// ========================================================
+function initAdminUI() {
+  const today = new Date();
+  document.getElementById('admin-today').textContent = formatDateAr(today);
+  // Init calendar date
+  document.getElementById('cal-date').value = formatDate(today);
+  // Load settings into form
+  document.getElementById('set-about').value = settings.about||'';
+  document.getElementById('set-address').value = settings.address||'';
+  document.getElementById('set-phone').value = settings.phone||'';
+  document.getElementById('set-wa').value = settings.whatsapp||'';
+  document.getElementById('set-hours').value = settings.hours||'';
+  document.getElementById('set-expiry').value = settings.expiryMinutes||30;
+  document.getElementById('set-slot').value = settings.slotMinutes||30;
+  document.getElementById('set-policy').value = settings.policy||'';
+  document.querySelectorAll('.work-day').forEach(cb => {
+    cb.checked = settings.workDays.includes(parseInt(cb.value));
+  });
+  document.getElementById('set-open').value = settings.openTime||'09:00';
+  document.getElementById('set-close').value = settings.closeTime||'21:00';
+  renderDashboard();
+  startExpiryChecker();
+}
+
+function showAdminPage(name) {
+  document.querySelectorAll('.admin-page').forEach(p=>p.classList.remove('active'));
+  const el = document.getElementById('adm-'+name);
+  if (el) el.classList.add('active');
+  const titles = {dashboard:'لوحة التحكم',requests:'الطلبات',bookings:'الحجوزات',calendar:'التقويم',services:'إدارة الخدمات',staff:'الاختصاصيات',settings:'الإعدادات'};
+  document.getElementById('admin-page-title').textContent = titles[name]||'';
+  document.querySelectorAll('.admin-nav-item').forEach(i=>i.classList.remove('active'));
+  event.currentTarget?.classList.add('active');
+  if (name==='dashboard') renderDashboard();
+  if (name==='requests') renderRequests();
+  if (name==='bookings') renderBookings();
+  if (name==='calendar') renderCalendar();
+  if (name==='services') renderServicesAdmin();
+  if (name==='staff') renderStaffAdmin();
+}
+
+function renderDashboard() {
+  checkExpiredBookings();
+  const today = formatDate(new Date());
+  const todayBooks = bookings.filter(b=>b.date===today);
+  const pending = bookings.filter(b=>b.status==='pending');
+  const confirmed = bookings.filter(b=>b.date===today&&b.status==='confirmed');
+  const statsEl = document.getElementById('dash-stats');
+  if (statsEl) statsEl.innerHTML = `
+    <div class="stat-card highlight"><div class="stat-val">${pending.length}</div><div class="stat-label">بانتظار التأكيد</div></div>
+    <div class="stat-card"><div class="stat-val">${confirmed.length}</div><div class="stat-label">مؤكد اليوم</div></div>
+    <div class="stat-card"><div class="stat-val">${todayBooks.length}</div><div class="stat-label">مجموع طلبات اليوم</div></div>
+    <div class="stat-card"><div class="stat-val">${bookings.filter(b=>b.status==='cancelled'&&b.date===today).length}</div><div class="stat-label">ملغي اليوم</div></div>
+  `;
+  // Pending badge
+  const badge = document.getElementById('pending-badge');
+  if (badge) { badge.textContent = pending.length; badge.style.display = pending.length?'':'none'; }
+  // Lists
+  renderBookingList('dash-pending-list', pending.slice(0,5), true);
+  renderBookingList('dash-confirmed-list', confirmed.slice(0,5), false);
+}
+
+function renderBookingList(containerId, list, showActions) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (!list.length) { el.innerHTML = '<div class="empty-state" style="padding:1.5rem;"><p>لا توجد حجوزات</p></div>'; return; }
+  el.innerHTML = list.map(b => renderBookingRow(b, showActions)).join('');
+}
+
+function renderBookingRow(b, showActions) {
+  const expiresAt = b.expiresAt ? new Date(b.expiresAt) : null;
+  const remaining = expiresAt ? Math.max(0, Math.round((expiresAt - new Date())/60000)) : 0;
+  const timerEl = b.status==='pending' && expiresAt ? `<span class="timer ${remaining<=5?'urgent':''}">⏱ ${remaining} د</span>` : '';
+  const statusBadge = `<span class="status-badge status-${b.status}">${statusLabel(b.status)}</span>`;
+  const waNum = (settings.whatsapp||'').replace(/\D/g,'');
+  const waMsg = buildWAMessage(b);
+  const waLink = waNum ? `<a href="https://wa.me/${waNum}?text=${encodeURIComponent(waMsg)}" target="_blank" class="btn-sm btn-whatsapp">واتساب</a>` : '';
+  let actions = '';
+  if (showActions || b.status==='pending') {
+    actions = `
+      ${b.status==='pending' ? `<button class="btn-sm btn-confirm" onclick="confirmBooking('${b.id}')">تأكيد</button>` : ''}
+      ${b.status==='pending' ? `<button class="btn-sm btn-reject" onclick="rejectBooking('${b.id}')">رفض</button>` : ''}
+      ${b.status==='confirmed' ? `<button class="btn-sm btn-cancel" onclick="cancelBooking('${b.id}')">إلغاء</button>` : ''}
+      ${waLink}
+    `;
+  } else {
+    actions = waLink;
+  }
+  return `<div class="booking-row">
+    <div class="booking-info">
+      <div class="booking-client">${b.clientName} — ${b.clientPhone}</div>
+      <div class="booking-detail">${b.serviceName} | ${b.specialistName||'أي اختصاصية'} | ${b.date} ${b.time}</div>
+      <div class="booking-detail">${formatPrice(b.price)} | ${statusBadge} ${timerEl}</div>
+      ${b.notes ? `<div class="booking-detail">ملاحظة: ${b.notes}</div>` : ''}
+    </div>
+    <div class="booking-actions">${actions}</div>
+  </div>`;
+}
+
+function renderRequests() {
+  checkExpiredBookings();
+  const status = document.getElementById('req-filter-status')?.value||'';
+  const search = (document.getElementById('req-search')?.value||'').toLowerCase();
+  let list = bookings.filter(b => {
+    if (status && b.status !== status) return false;
+    if (search && !b.clientName.toLowerCase().includes(search) && !b.clientPhone.includes(search) && !b.id.toLowerCase().includes(search)) return false;
+    return true;
+  }).sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+  const el = document.getElementById('requests-list');
+  if (!el) return;
+  if (!list.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📋</div><p>لا توجد طلبات</p></div>'; return; }
+  el.innerHTML = '<div class="admin-card"><div class="admin-card-body">' + list.map(b=>renderBookingRow(b,true)).join('') + '</div></div>';
+}
+
+function renderBookings() {
+  checkExpiredBookings();
+  const status = document.getElementById('book-filter-status')?.value||'';
+  const dateF = document.getElementById('book-filter-date')?.value||'';
+  const search = (document.getElementById('book-search')?.value||'').toLowerCase();
+  let list = bookings.filter(b => {
+    if (status && b.status !== status) return false;
+    if (dateF && b.date !== dateF) return false;
+    if (search && !b.clientName.toLowerCase().includes(search) && !b.clientPhone.includes(search) && !b.id.toLowerCase().includes(search)) return false;
+    return true;
+  }).sort((a,b) => new Date(b.createdAt)-new Date(a.createdAt));
+  const el = document.getElementById('bookings-list');
+  if (!el) return;
+  if (!list.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">📋</div><p>لا توجد حجوزات</p></div>'; return; }
+  el.innerHTML = '<div class="admin-card"><div class="admin-card-body">' + list.map(b=>renderBookingRow(b,true)).join('') + '</div></div>';
+}
+
+function renderCalendar() {
+  const dateVal = document.getElementById('cal-date')?.value;
+  const viewType = document.getElementById('cal-view-type')?.value || 'day';
+  const el = document.getElementById('calendar-view');
+  if (!el) return;
+  if (viewType === 'day') {
+    renderDayCalendar(dateVal, el);
+  } else {
+    renderWeekCalendar(dateVal, el);
+  }
+}
+
+function renderDayCalendar(dateStr, el) {
+  const staffActive = staff.filter(s=>s.active);
+  if (!staffActive.length) { el.innerHTML = '<div class="empty-state"><p>لا توجد اختصاصيات</p></div>'; return; }
+  const dayBookings = bookings.filter(b => b.date===dateStr && b.status!=='rejected' && b.status!=='cancelled' && b.status!=='expired');
+  const slots = generateSlotsForDate(new Date(dateStr));
+  el.innerHTML = `<div class="calendar-view">
+    <div class="calendar-slots">
+      <div class="calendar-col">
+        <div class="calendar-col-header">الوقت</div>
+        ${slots.map(t=>`<div style="font-size:0.75rem;color:var(--text-soft);padding:0.2rem 0.3rem;height:36px;display:flex;align-items:center;">${t}</div>`).join('')}
+      </div>
+      ${staffActive.map(s => {
+        const specBooks = dayBookings.filter(b=>!b.specialistId||b.specialistId===s.id);
+        return `<div class="calendar-col">
+          <div class="calendar-col-header">${s.name}</div>
+          ${slots.map(t => {
+            const book = specBooks.find(b=>b.time===t);
+            if (book) return `<div class="calendar-booking ${book.status}" title="${book.clientName}" style="height:36px;" onclick="showBookingDetail('${book.id}')">
+              <div style="font-size:0.7rem;font-weight:700;">${book.time}</div>
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${book.clientName}</div>
+            </div>`;
+            return `<div style="height:36px;border-bottom:1px solid var(--border);"></div>`;
+          }).join('')}
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function renderWeekCalendar(dateStr, el) {
+  const d = new Date(dateStr);
+  const dayStart = d.getDay();
+  const weekStart = new Date(d); weekStart.setDate(d.getDate() - dayStart);
+  const days = Array.from({length:7},(_,i)=>{const x=new Date(weekStart);x.setDate(weekStart.getDate()+i);return x;});
+  const dayNames = ['أح','إث','ثل','أر','خم','جم','سب'];
+  el.innerHTML = `<div class="calendar-view"><table style="width:100%;border-collapse:collapse;">
+    <thead><tr>
+      <th class="week-header" style="width:60px;">الوقت</th>
+      ${days.map((d,i)=>`<th class="week-header">${dayNames[i]}<br><span style="font-size:0.7rem;">${d.getDate()}</span></th>`).join('')}
+    </tr></thead>
+    <tbody>
+      ${generateSlots().map(t=>`<tr>
+        <td class="week-cell week-time">${t}</td>
+        ${days.map(day=>{
+          const ds=formatDate(day);
+          const b=bookings.find(bk=>bk.date===ds&&bk.time===t&&bk.status!=='rejected'&&bk.status!=='cancelled'&&bk.status!=='expired');
+          return `<td class="week-cell">${b?`<div class="week-booking-chip ${b.status}">${b.clientName.substring(0,8)}</div>`:''}</td>`;
+        }).join('')}
+      </tr>`).join('')}
+    </tbody>
+  </table></div>`;
+}
+
+function generateSlotsForDate(date) {
+  const temp = bk.date;
+  bk.date = date;
+  const slots = generateSlots();
+  bk.date = temp;
+  return slots;
+}
+
+function changeCalendarDate(n) {
+  const el = document.getElementById('cal-date');
+  const d = new Date(el.value);
+  d.setDate(d.getDate()+n);
+  el.value = formatDate(d);
+  renderCalendar();
+}
+
+// ========================================================
+// BOOKING ACTIONS
+// ========================================================
+async function confirmBooking(id) {
+  const b = bookings.find(x=>x.id===id);
+  if (!b) return;
+  // Re-check for conflicts
+  const conflict = bookings.find(x =>
+    x.id !== id && x.date===b.date && x.status==='confirmed' &&
+    (!x.specialistId || !b.specialistId || x.specialistId===b.specialistId) &&
+    timesOverlap(b.time, b.duration, x.time, x.duration)
+  );
+  if (conflict) { alert(`تعارض مع حجز مؤكد: #${conflict.id} — ${conflict.clientName}`); return; }
+  b.status = 'confirmed';
+  b.log = b.log||[];
+  b.log.push({action:'confirmed', at:new Date().toISOString(), by:'admin'});
+  await persistBookings();
+  refreshAllAdminViews();
+}
+
+async function rejectBooking(id) {
+  const b = bookings.find(x=>x.id===id);
+  if (!b) return;
+  const reason = prompt('سبب الرفض (اختياري):') ?? '';
+  b.status = 'rejected';
+  b.rejectionReason = reason;
+  b.log = b.log||[];
+  b.log.push({action:'rejected', at:new Date().toISOString(), by:'admin', reason});
+  await persistBookings();
+  refreshAllAdminViews();
+}
+
+async function cancelBooking(id) {
+  if (!confirm('هل تريدين إلغاء هذا الحجز؟')) return;
+  const b = bookings.find(x=>x.id===id);
+  if (!b) return;
+  b.status = 'cancelled';
+  b.log = b.log||[];
+  b.log.push({action:'cancelled', at:new Date().toISOString(), by:'admin'});
+  await persistBookings();
+  refreshAllAdminViews();
+}
+
+function checkExpiredBookings() {
+  const now = new Date();
+  let changed = false;
+  bookings.forEach(b => {
+    if (b.status==='pending' && b.expiresAt && new Date(b.expiresAt) <= now) {
+      b.status = 'expired';
+      b.log = b.log||[];
+      b.log.push({action:'expired', at:now.toISOString()});
+      changed = true;
+    }
+  });
+  if (changed) persistBookings();
+}
+
+function startExpiryChecker() {
+  setInterval(() => {
+    checkExpiredBookings();
+    if (adminLoggedIn) refreshAllAdminViews();
+  }, 30000); // check every 30 seconds
+}
+
+function timesOverlap(t1,d1,t2,d2) {
+  const [h1,m1]=t1.split(':').map(Number), s1=h1*60+m1, e1=s1+(d1||30);
+  const [h2,m2]=t2.split(':').map(Number), s2=h2*60+m2, e2=s2+(d2||30);
+  return s1<e2 && e1>s2;
+}
+
+function refreshAllAdminViews() {
+  const active = document.querySelector('.admin-page.active');
+  if (!active) return;
+  const id = active.parentElement.id || active.id;
+  renderDashboard();
+  if (document.getElementById('adm-requests').classList.contains('active')) renderRequests();
+  if (document.getElementById('adm-bookings').classList.contains('active')) renderBookings();
+  if (document.getElementById('adm-calendar').classList.contains('active')) renderCalendar();
+  const badge = document.getElementById('pending-badge');
+  const pending = bookings.filter(b=>b.status==='pending').length;
+  if (badge) { badge.textContent=pending; badge.style.display=pending?'':'none'; }
+}
+
+function showBookingDetail(id) {
+  const b = bookings.find(x=>x.id===id);
+  if (!b) return;
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-title">تفاصيل الحجز #${b.id}</div>
+    <div class="booking-summary">
+      <div class="summary-row"><span class="summary-label">الاسم</span><span class="summary-value">${b.clientName}</span></div>
+      <div class="summary-row"><span class="summary-label">الهاتف</span><span class="summary-value">${b.clientPhone}</span></div>
+      <div class="summary-row"><span class="summary-label">الخدمة</span><span class="summary-value">${b.serviceName}</span></div>
+      <div class="summary-row"><span class="summary-label">الاختصاصية</span><span class="summary-value">${b.specialistName}</span></div>
+      <div class="summary-row"><span class="summary-label">التاريخ والوقت</span><span class="summary-value">${b.date} — ${b.time}</span></div>
+      <div class="summary-row"><span class="summary-label">السعر</span><span class="summary-value">${formatPrice(b.price)}</span></div>
+      <div class="summary-row"><span class="summary-label">الحالة</span><span class="summary-value"><span class="status-badge status-${b.status}">${statusLabel(b.status)}</span></span></div>
+      ${b.notes ? `<div class="summary-row"><span class="summary-label">ملاحظات</span><span class="summary-value">${b.notes}</span></div>` : ''}
+      ${b.rejectionReason ? `<div class="summary-row"><span class="summary-label">سبب الرفض</span><span class="summary-value">${b.rejectionReason}</span></div>` : ''}
+    </div>
+    <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-soft);">
+      <b>سجل الطلب:</b><br>
+      ${(b.log||[]).map(l=>`${l.at?.substring(0,16)} — ${l.action}${l.reason?' ('+l.reason+')':''}`).join('<br>')}
+    </div>
+    <div class="btn-group" style="margin-top:1rem;">
+      ${b.status==='pending'?`<button class="btn btn-primary btn-sm" onclick="confirmBooking('${b.id}');closeModal()">تأكيد</button>`:''}
+      ${b.status==='pending'?`<button class="btn btn-sm btn-reject" onclick="rejectBooking('${b.id}');closeModal()">رفض</button>`:''}
+      ${b.status==='confirmed'?`<button class="btn btn-sm btn-cancel" onclick="cancelBooking('${b.id}');closeModal()">إلغاء</button>`:''}
+      <button class="btn btn-secondary btn-sm" onclick="closeModal()">إغلاق</button>
+    </div>`;
+  openModal();
+}
+
+// ========================================================
+// ADD BOOKING (Admin manual)
+// ========================================================
+function openAddBookingModal() {
+  const catOpts = categories.filter(c=>c.active).map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+  const svcOpts = services.filter(s=>s.active).map(s=>`<option value="${s.id}">${s.name} — ${formatPrice(s.price)}</option>`).join('');
+  const staffOpts = ['<option value="">أي اختصاصية</option>',...staff.filter(s=>s.active).map(s=>`<option value="${s.id}">${s.name}</option>`)].join('');
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-title">+ حجز جديد (هاتف / حضوري)</div>
+    <div class="form-grid-2">
+      <div class="field-group">
+        <label class="field-label">الاسم *</label>
+        <input type="text" id="mb-name" class="field-input" placeholder="اسم الزبونة">
+      </div>
+      <div class="field-group">
+        <label class="field-label">الهاتف *</label>
+        <input type="tel" id="mb-phone" class="field-input" placeholder="07...">
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="field-group">
+        <label class="field-label">القسم</label>
+        <select id="mb-cat" class="field-input">${catOpts}</select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">الخدمة *</label>
+        <select id="mb-svc" class="field-input">${svcOpts}</select>
+      </div>
+    </div>
+    <div class="form-grid-2">
+      <div class="field-group">
+        <label class="field-label">الاختصاصية</label>
+        <select id="mb-staff" class="field-input">${staffOpts}</select>
+      </div>
+      <div class="form-grid-2">
+        <div class="field-group">
+          <label class="field-label">التاريخ *</label>
+          <input type="date" id="mb-date" class="field-input" value="${formatDate(new Date())}">
+        </div>
+        <div class="field-group">
+          <label class="field-label">الوقت *</label>
+          <input type="time" id="mb-time" class="field-input" value="10:00">
+        </div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label class="field-label">ملاحظات</label>
+      <textarea id="mb-notes" class="field-input" rows="2"></textarea>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="saveManualBooking()" style="flex:1;justify-content:center;">حفظ الحجز</button>
+    </div>`;
+  openModal();
+}
+
+async function saveManualBooking() {
+  const name = document.getElementById('mb-name').value.trim();
+  const phone = document.getElementById('mb-phone').value.trim();
+  const svcId = document.getElementById('mb-svc').value;
+  const date = document.getElementById('mb-date').value;
+  const time = document.getElementById('mb-time').value;
+  if (!name||!phone||!svcId||!date||!time) { alert('يرجى تعبئة الحقول المطلوبة'); return; }
+  const svc = services.find(s=>s.id===svcId);
+  const cat = categories.find(c=>c.id===document.getElementById('mb-cat').value);
+  const staffId = document.getElementById('mb-staff').value;
+  const sp = staffId ? staff.find(s=>s.id===staffId) : null;
+  const id = 'BK' + Date.now().toString().slice(-6) + 'M';
+  const now = new Date();
+  const booking = {
+    id, status:'confirmed',
+    clientName:name, clientPhone:phone,
+    catId:cat?.id||'', catName:cat?.name||'',
+    serviceId:svcId, serviceName:svc?.name||'', price:svc?.price||0, duration:svc?.duration||30,
+    specialistId:staffId||null, specialistName:sp?.name||'أي اختصاصية',
+    date, time, notes:document.getElementById('mb-notes').value,
+    createdAt:now.toISOString(), source:'admin',
+    log:[{action:'created-by-admin', at:now.toISOString()}]
+  };
+  bookings.push(booking);
+  await persistBookings();
+  closeModal(); refreshAllAdminViews();
+}
+
+// ========================================================
+// SERVICES ADMIN
+// ========================================================
+function renderServicesAdmin() {
+  const el = document.getElementById('services-admin-list');
+  if (!el) return;
+  el.innerHTML = categories.map(cat => {
+    const svcs = services.filter(s=>s.catId===cat.id);
+    return `<div class="admin-card" style="margin-bottom:1rem;">
+      <div class="admin-card-header">
+        <span>${cat.icon} ${cat.name} <span class="tag ${cat.active?'tag-active':'tag-inactive'}">${cat.active?'نشط':'مخفي'}</span></span>
+        <div style="display:flex;gap:0.5rem;">
+          <button class="btn-sm btn-cancel" onclick="toggleCategory('${cat.id}')">تفعيل/إخفاء</button>
+          <button class="btn-sm btn-confirm" onclick="openServiceModal('','${cat.id}')">+ خدمة</button>
+        </div>
+      </div>
+      <div class="admin-card-body">
+        ${svcs.length ? svcs.map(s=>`
+          <div class="booking-row">
+            <div class="booking-info">
+              <div class="booking-client">${s.icon} ${s.name} <span class="tag ${s.active?'tag-active':'tag-inactive'}">${s.active?'نشطة':'مخفية'}</span></div>
+              <div class="booking-detail">${formatPrice(s.price)} | ${s.duration} دقيقة | ${s.desc||''}</div>
+            </div>
+            <div class="booking-actions">
+              <button class="btn-sm btn-cancel" onclick="toggleService('${s.id}')">تفعيل/إخفاء</button>
+              <button class="btn-sm btn-confirm" onclick="openServiceModal('${s.id}')">تعديل</button>
+            </div>
+          </div>`).join('') : '<div style="color:var(--text-soft);font-size:0.85rem;padding:0.5rem;">لا توجد خدمات في هذا القسم</div>'}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openCategoryModal(id) {
+  const cat = id ? categories.find(c=>c.id===id) : null;
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-title">${cat ? 'تعديل القسم' : 'قسم جديد'}</div>
+    <div class="field-group"><label class="field-label">اسم القسم *</label>
+      <input type="text" id="cat-name" class="field-input" value="${cat?.name||''}" placeholder="مثال: الأظافر"></div>
+    <div class="field-group"><label class="field-label">الأيقونة (إيموجي)</label>
+      <input type="text" id="cat-icon" class="field-input" value="${cat?.icon||'💆'}" placeholder="💆"></div>
+    <div class="field-group">
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.9rem;">
+        <input type="checkbox" id="cat-spec" ${cat?.requiresSpecialist?'checked':''} style="accent-color:var(--gold);">
+        تتطلب اختيار اختصاصية
+      </label>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="saveCategory('${id||''}')">حفظ</button>
+    </div>`;
+  openModal();
+}
+
+async function saveCategory(id) {
+  const name = document.getElementById('cat-name').value.trim();
+  if (!name) { alert('يرجى إدخال اسم القسم'); return; }
+  if (id) {
+    const c = categories.find(x=>x.id===id);
+    if (c) { c.name=name; c.icon=document.getElementById('cat-icon').value||'💆'; c.requiresSpecialist=document.getElementById('cat-spec').checked; }
+  } else {
+    categories.push({id:'cat'+Date.now(),name,icon:document.getElementById('cat-icon').value||'💆',active:true,requiresSpecialist:document.getElementById('cat-spec').checked});
+  }
+  await persistCategories(); closeModal(); renderServicesAdmin(); renderPublicUI();
+}
+
+async function toggleCategory(id) {
+  const c = categories.find(x=>x.id===id);
+  if (c) { c.active=!c.active; await persistCategories(); renderServicesAdmin(); renderPublicUI(); }
+}
+
+function openServiceModal(id, catId) {
+  const svc = id ? services.find(s=>s.id===id) : null;
+  const catOpts = categories.map(c=>`<option value="${c.id}" ${(catId&&c.id===catId)||(svc&&c.id===svc.catId)?'selected':''}>${c.name}</option>`).join('');
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-title">${svc ? 'تعديل الخدمة' : 'خدمة جديدة'}</div>
+    <div class="field-group"><label class="field-label">القسم *</label>
+      <select id="svc-cat" class="field-input">${catOpts}</select></div>
+    <div class="form-grid-2">
+      <div class="field-group"><label class="field-label">اسم الخدمة *</label>
+        <input type="text" id="svc-name" class="field-input" value="${svc?.name||''}"></div>
+      <div class="field-group"><label class="field-label">الأيقونة</label>
+        <input type="text" id="svc-icon" class="field-input" value="${svc?.icon||'💆'}"></div>
+    </div>
+    <div class="field-group"><label class="field-label">الوصف</label>
+      <textarea id="svc-desc" class="field-input" rows="2">${svc?.desc||''}</textarea></div>
+    <div class="form-grid-2">
+      <div class="field-group"><label class="field-label">السعر (دينار) *</label>
+        <input type="number" id="svc-price" class="field-input" value="${svc?.price||''}"></div>
+      <div class="field-group"><label class="field-label">المدة (دقائق) *</label>
+        <input type="number" id="svc-dur" class="field-input" value="${svc?.duration||30}"></div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="saveService('${id||''}')">حفظ</button>
+    </div>`;
+  openModal();
+}
+
+async function saveService(id) {
+  const name = document.getElementById('svc-name').value.trim();
+  const price = parseFloat(document.getElementById('svc-price').value)||0;
+  const dur = parseInt(document.getElementById('svc-dur').value)||30;
+  const catId = document.getElementById('svc-cat').value;
+  if (!name||!catId) { alert('يرجى تعبئة الحقول المطلوبة'); return; }
+  if (id) {
+    const s = services.find(x=>x.id===id);
+    if (s) { s.name=name; s.catId=catId; s.price=price; s.duration=dur; s.desc=document.getElementById('svc-desc').value; s.icon=document.getElementById('svc-icon').value||'💆'; }
+  } else {
+    services.push({id:'s'+Date.now(),name,catId,price,duration:dur,desc:document.getElementById('svc-desc').value,icon:document.getElementById('svc-icon').value||'💆',active:true});
+  }
+  await persistServices(); closeModal(); renderServicesAdmin(); renderPublicUI();
+}
+
+async function toggleService(id) {
+  const s = services.find(x=>x.id===id);
+  if (s) { s.active=!s.active; await persistServices(); renderServicesAdmin(); renderPublicUI(); }
+}
+
+// ========================================================
+// STAFF ADMIN
+// ========================================================
+function renderStaffAdmin() {
+  const el = document.getElementById('staff-list');
+  if (!el) return;
+  el.innerHTML = staff.length ? `<div class="admin-card"><div class="admin-card-body">${staff.map(s=>`
+    <div class="booking-row">
+      <div class="booking-info">
+        <div class="booking-client">${s.icon||'👩'} ${s.name} <span class="tag ${s.active?'tag-active':'tag-inactive'}">${s.active?'نشطة':'غير نشطة'}</span></div>
+        <div class="booking-detail">
+          الأقسام: ${(s.catIds||[]).map(id=>categories.find(c=>c.id===id)?.name||id).join('، ')} | 
+          الخدمات: ${(s.serviceIds||[]).length} خدمة |
+          الدوام: ${s.workStart||'09:00'} – ${s.workEnd||'21:00'}
+        </div>
+      </div>
+      <div class="booking-actions">
+        <button class="btn-sm btn-cancel" onclick="toggleStaff('${s.id}')">تفعيل/إخفاء</button>
+        <button class="btn-sm btn-confirm" onclick="openStaffModal('${s.id}')">تعديل</button>
+      </div>
+    </div>`).join('')}</div></div>` : '<div class="empty-state"><div class="empty-icon">👩</div><p>لا توجد اختصاصيات. أضيفي أول اختصاصية.</p></div>';
+}
+
+function openStaffModal(id) {
+  const sp = id ? staff.find(s=>s.id===id) : null;
+  const catChecks = categories.map(c=>`
+    <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.85rem;cursor:pointer;">
+      <input type="checkbox" class="sp-cat" value="${c.id}" ${sp?.catIds?.includes(c.id)?'checked':''} style="accent-color:var(--gold);"> ${c.name}
+    </label>`).join('');
+  const svcChecks = services.map(s=>`
+    <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.85rem;cursor:pointer;">
+      <input type="checkbox" class="sp-svc" value="${s.id}" ${sp?.serviceIds?.includes(s.id)?'checked':''} style="accent-color:var(--gold);"> ${s.name}
+    </label>`).join('');
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-title">${sp ? 'تعديل الاختصاصية' : 'اختصاصية جديدة'}</div>
+    <div class="form-grid-2">
+      <div class="field-group"><label class="field-label">الاسم *</label>
+        <input type="text" id="sp-name" class="field-input" value="${sp?.name||''}"></div>
+      <div class="field-group"><label class="field-label">الأيقونة</label>
+        <input type="text" id="sp-icon" class="field-input" value="${sp?.icon||'👩'}"></div>
+    </div>
+    <div class="form-grid-2">
+      <div class="field-group"><label class="field-label">بداية دوامها</label>
+        <input type="time" id="sp-start" class="field-input" value="${sp?.workStart||'09:00'}"></div>
+      <div class="field-group"><label class="field-label">نهاية دوامها</label>
+        <input type="time" id="sp-end" class="field-input" value="${sp?.workEnd||'21:00'}"></div>
+    </div>
+    <div class="field-group"><label class="field-label">الأقسام</label>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.35rem;">${catChecks}</div>
+    </div>
+    <div class="field-group"><label class="field-label">الخدمات</label>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.35rem;">${svcChecks}</div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="saveStaff('${id||''}')">حفظ</button>
+    </div>`;
+  openModal();
+}
+
+async function saveStaff(id) {
+  const name = document.getElementById('sp-name').value.trim();
+  if (!name) { alert('يرجى إدخال الاسم'); return; }
+  const catIds = [...document.querySelectorAll('.sp-cat:checked')].map(c=>c.value);
+  const serviceIds = [...document.querySelectorAll('.sp-svc:checked')].map(c=>c.value);
+  const data = {name, icon:document.getElementById('sp-icon').value||'👩', catIds, serviceIds, workStart:document.getElementById('sp-start').value, workEnd:document.getElementById('sp-end').value};
+  if (id) {
+    const s = staff.find(x=>x.id===id);
+    if (s) Object.assign(s, data);
+  } else {
+    staff.push({id:'st'+Date.now(), ...data, active:true});
+  }
+  await persistStaff(); closeModal(); renderStaffAdmin();
+}
+
+async function toggleStaff(id) {
+  const s = staff.find(x=>x.id===id);
+  if (s) { s.active=!s.active; await persistStaff(); renderStaffAdmin(); }
+}
+
+// ========================================================
+// SETTINGS
+// ========================================================
+async function saveSettings() {
+  settings.about = document.getElementById('set-about').value;
+  settings.address = document.getElementById('set-address').value;
+  settings.phone = document.getElementById('set-phone').value;
+  settings.whatsapp = document.getElementById('set-wa').value;
+  settings.hours = document.getElementById('set-hours').value;
+  settings.expiryMinutes = parseInt(document.getElementById('set-expiry').value)||30;
+  settings.slotMinutes = parseInt(document.getElementById('set-slot').value)||30;
+  settings.policy = document.getElementById('set-policy').value;
+  settings.workDays = [...document.querySelectorAll('.work-day:checked')].map(c=>parseInt(c.value));
+  settings.openTime = document.getElementById('set-open').value;
+  settings.closeTime = document.getElementById('set-close').value;
+  await persistSettings();
+  applySettings(); renderPublicUI();
+  const saved = document.getElementById('settings-saved');
+  saved.style.display='block'; setTimeout(()=>saved.style.display='none',2500);
+}
+
+// ========================================================
+// MODAL
+// ========================================================
+function openModal() {
+  document.getElementById('modal-overlay').classList.remove('hidden');
+}
+function closeModal(e) {
+  if (!e || e.target.id === 'modal-overlay') {
+    document.getElementById('modal-overlay').classList.add('hidden');
+  }
+}
+
+// ========================================================
+// UTILS
+// ========================================================
+function formatPrice(p) {
+  if (!p) return '—';
+  return Number(p).toLocaleString('ar-IQ') + ' د.ع';
+}
+function formatDate(d) {
+  const dt = d instanceof Date ? d : new Date(d);
+  return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+}
+function formatDateAr(d) {
+  const dt = d instanceof Date ? d : new Date(d);
+  const months = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  return `${dt.getDate()} ${months[dt.getMonth()]} ${dt.getFullYear()}`;
+}
+function statusLabel(s) {
+  const m = {pending:'⏳ بانتظار التأكيد',confirmed:'✅ مؤكد',rejected:'❌ مرفوض',cancelled:'🚫 ملغي',expired:'⌛ منتهي'};
+  return m[s]||s;
+}
+
+// ========================================================
+// INIT
+// ========================================================
+window.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('public-site').style.display='block';
+  await initDB();
+  // start expiry checker even without admin
+  setInterval(checkExpiredBookings, 60000);
+});
+</script>
+</body>
+</html>
